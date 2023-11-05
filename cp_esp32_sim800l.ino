@@ -1,6 +1,6 @@
-#include <SoftwareSerial.h>
-//Create software serial object to communicate with SIM800L
-SoftwareSerial sim800l(16, 17); 
+
+HardwareSerial sim800l(2);//Serial port 2
+
 
 void setup() {
   delay(1000);
@@ -9,7 +9,8 @@ void setup() {
   delay(300);
 
   //Begin serial communication with Arduino and SIM800L
-  sim800l.begin(115200);
+  sim800l.begin(115200, SERIAL_8N1);
+  Serial.println("\nSIM800 EVB to ESP32 Serial port 2 test");
 
   Serial.println("Initializing...");
   delay(1000);
@@ -33,7 +34,7 @@ void updateSerial()
 {
   delay(500);
   while (Serial.available()) 
-  {
+  {    
     sim800l.write(Serial.read());//Forward what Serial received to Software Serial Port
   }
   while(sim800l.available()) 
