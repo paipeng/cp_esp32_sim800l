@@ -1,5 +1,5 @@
 
-HardwareSerial sim800l(2);//Serial port 2
+HardwareSerial sim800l(1);//Serial port 2
 
 
 void setup() {
@@ -9,7 +9,7 @@ void setup() {
   delay(300);
 
   //Begin serial communication with Arduino and SIM800L
-  sim800l.begin(115200, SERIAL_8N1);
+  sim800l.begin(9600, SERIAL_8N1, 12, 13);
   Serial.println("\nSIM800 EVB to ESP32 Serial port 2 test");
 
   Serial.println("Initializing...");
